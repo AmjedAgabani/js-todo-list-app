@@ -18,3 +18,13 @@ export function toggleTaskCompletion(index) {
   tasks[index].completed = !tasks[index].completed;
   saveTasks();
 }
+
+export function editTask(index, newText) {
+  tasks[index].text = newText;
+  saveTasks();
+}
+
+export function clearCompletedTasks() {
+  tasks = tasks.filter(task => !task.completed);
+  saveTasks();
+}
