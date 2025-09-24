@@ -8,23 +8,42 @@
   body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; }
   h1 { text-align: center; }
   #new-task-input { width: 70%; padding: 10px; }
-  #add-task-btn { padding: 10px; }
+  #add-task-btn, #clear-completed-btn { padding: 10px; margin-left: 5px; cursor: pointer; }
   ul { list-style: none; padding-left: 0; }
   li { padding: 10px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
   li.completed { text-decoration: line-through; color: gray; }
-  button.delete-btn { background: crimson; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+  button.delete-btn { background: crimson; color: white; border: none; padding: 5px 10px; cursor: pointer; flex-shrink: 0; }
+  span.task-text { flex-grow: 1; outline: none; }
+  span.task-text[contenteditable="true"] {
+    border-bottom: 1px dashed #666;
+    cursor: text;
+  }
+  #task-count {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+  #controls {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 </head>
 <body>
 
 <h1>To-Do List</h1>
 
-<div>
+<div id="controls">
   <input type="text" id="new-task-input" placeholder="Enter new task..." />
   <button id="add-task-btn">Add</button>
+  <button id="clear-completed-btn" title="Remove all completed tasks">Clear Completed</button>
 </div>
 
 <ul id="task-list"></ul>
+
+<div id="task-count"></div>
 
 <script type="module" src="/scripts/app.js"></script>
 
